@@ -1,100 +1,4 @@
 
-// import Image from 'next/image';
-// import Link from 'next/link'
-// import React from 'react'
-// import { LuGithub, LuLinkedin } from "react-icons/lu";
-// import { MdOutlineEmail } from "react-icons/md";
-// import AnimatedAvatar from './AnimatedAvatar';
-
-// export default function Hero() {
-//     return (
-//         <div className='w-full h-screen '>
-//             <nav className='flex items-center justify-between w-full py-4 dark:bg-black'>
-//                 <Link href="/" className=' font-heading uppercase text-xl font-bold dark:text-white bg-gradient-to-r from-[#008DB9] via-[#008DB9] to-[#c43d56] 
-//              bg-clip-text text-transparent'>
-//                     Ayan Sujon
-//                 </Link>
-//                 <Link
-//                     href="/meeting"
-//                     className="font-heading text-lg font-semibold capitalize rounded-xl px-6 py-2
-//              bg-[linear-gradient(90deg,#008DB9_0%,#c43d56_50%,#008DB9_100%)] 
-//              bg-[length:200%_100%] 
-//              animate-gradient 
-//              text-white shadow-lg hover:shadow-xl"
-//                 >
-//                     Need any solution?
-//                 </Link>
-
-
-//             </nav>
-
-
-//             {/* Hero Section */}
-//             <main className="flex justify-between items-center align-center py-12">
-//                 <div>
-
-//                     <h1 className='text-4xl font-bold  dark:text-white bg-gradient-to-r from-[#008DB9] to-[#c43d56] 
-//              bg-clip-text text-transparent'>Hi, I'm Ayan Sujon</h1>
-//                     <p className='text-zinc-600 dark:text-zinc-400'>Tech Enthusiast | React Developer. I love turning ideas into clean, impactful, and user-friendly web experiences.</p>
-//                     <div className='flex items-center gap-4 mt-4'>
-
-//                         <button className='bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded '>
-//                             Hire Me
-//                         </button>
-//                         <ul className='flex items-center gap-4'>
-//                             <li><Link href="https://www.linkedin.com/in/ayansujon" target='_blank' className='text-zinc-600 hover:text-blue-500 dark:text-zinc-400 dark:hover:text-blue-400'>
-//                                 <LuLinkedin size={24} />
-
-
-//                             </Link></li>
-//                             <li><Link href="https://github.com/AyanSujon" target='_blank' className='text-zinc-600 hover:text-blue-500 dark:text-zinc-400 dark:hover:text-blue-400'>
-//                                 <LuGithub size={24} />
-
-//                             </Link></li>
-//                             <li><Link href="mailto:ayansujon.contact@gmail.com" target='_blank' className='text-zinc-600 hover:text-blue-500 dark:text-zinc-400 dark:hover:text-blue-400'>
-//                                 <MdOutlineEmail size={24} />
-
-//                             </Link></li>
-//                         </ul>
-//                     </div>
-
-//                 </div>
-//                 <div>
-//                     <figure>
-//                         <Image
-//                             src="https://i.ibb.co/qXdkjZV/ayansujon-copy.jpg"
-//                             alt="Ayan Sujon"
-//                             width={300}
-//                             height={300}
-//                             className="rounded-lg shadow-lg"
-//                         />
-//                     </figure>
-
-
-
-
-//                 </div>
-//             </main>
-
-
-//         </div>
-//     )
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -102,90 +6,122 @@ import React from 'react';
 import { LuGithub, LuLinkedin } from "react-icons/lu";
 import { MdOutlineEmail } from "react-icons/md";
 
-
 export default function Hero() {
     return (
-        <div className='w-full min-h-screen relative overflow-hidden'>
+        <div className='w-full min-h-screen relative overflow-hidden bg-[#101010]'>
 
-            <nav className='flex items-center justify-between w-full py-6 px-8 relative z-10'>
+            {/* Ambient glass background glow */}
+            <div className="pointer-events-none absolute inset-0 -z-10">
+                <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-[#008DB9]/20 rounded-full blur-[120px]" />
+                <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-[#c43d56]/20 rounded-full blur-[120px]" />
+            </div>
+
+            <nav className='flex items-center justify-between w-full py-6 relative z-10'>
                 <Link href="/" className='font-heading uppercase text-2xl font-bold bg-gradient-to-r from-[#008DB9] via-white to-[#c43d56] bg-clip-text text-transparent'>
                     Ayan Sujon
                 </Link>
 
                 <Link
                     href="/meeting"
-                    className="font-heading text-lg font-semibold capitalize rounded-2xl px-7 py-3
-                     bg-[linear-gradient(90deg,#008DB9_0%,#c43d56_50%,#008DB9_100%)] 
-                     bg-[length:200%_100%] animate-gradient text-white shadow-2xl hover:shadow-[#c43d56]/50 transition-all"
+                    className="relative inline-flex items-center justify-center rounded-2xl p-[2px] overflow-hidden group"
                 >
-                    Need any solution?
+                    <span
+                        className="absolute inset-0 bg-[linear-gradient(90deg,#008DB9_0%,#c43d56_50%,#008DB9_100%)]
+               bg-[length:200%_100%] animate-gradient"
+                    />
+                    <span
+                        className="relative rounded-[14px] bg-black px-7 py-1 text-lg font-semibold font-heading
+               text-white transition-all duration-300 group-hover:shadow-lg group-hover:shadow-[#c43d56]/40"
+                    >
+                        Need any solution?
+                    </span>
                 </Link>
+
+
             </nav>
 
             {/* Hero Section */}
-            <main className="flex flex-col lg:flex-row justify-between items-center max-w-6xl mx-auto px-8 pt-12 gap-12 relative z-10">
-                <div className="flex-1 space-y-6">
-                    <h1 className='text-5xl md:text-6xl font-bold bg-gradient-to-r from-white via-[#008DB9] to-white bg-clip-text text-transparent leading-tight'>
+            <main className="flex flex-col lg:flex-row justify-between items-center max-w-7xl mx-auto px-6 lg:px-12 pt-16 lg:pt-12 gap-16 lg:gap-12 relative z-10">
+                <div className="flex-1 space-y-6 text-center lg:text-left max-w-xl">
+                    <h1 className='text-5xl md:text-6xl font-bold bg-gradient-to-r from-white via-[#008DB9] to-[#c43d56] bg-clip-text text-transparent leading-tight'>
                         Hi, I&apos;m Ayan Sujon
                     </h1>
-                    <p className='text-xl text-zinc-400 max-w-md'>
-                        Tech Enthusiast | React Developer.<br />
-                        I love turning ideas into clean, impactful, and user-friendly web experiences.
+                    <h3 className='text-2xl font-semibold text-zinc-300'>
+                        Full Stack Developer, AI Automation Specialist, SaaS Product Builder
+                    </h3>
+                    <p className='text-xl text-zinc-400 mx-auto lg:mx-0 max-w-md'>
+                        I craft modern, scalable, and high-performing web applications using
+                        React, Next.js, TypeScript, Node.js, Express, MongoDB, PostgreSQL,
+                        Prisma, and Tailwind CSS. My focus is on creating clean user
+                        experiences, robust backend systems, and products that solve real-world
+                        problems.
                     </p>
 
-                    <div className='flex items-center gap-6'>
-                        <button className='bg-white text-black font-semibold py-3.5 px-9 rounded-2xl hover:bg-white/90 transition-all active:scale-95'>
+                    <div className='flex flex-col sm:flex-row items-center gap-6'>
+                        <Link
+                            href="/meeting"
+                            className="font-heading text-lg font-semibold capitalize rounded-2xl px-7 py-2 bg-[linear-gradient(90deg,#008DB9_0%,#c43d56_50%,#008DB9_100%)] bg-[length:200%_100%] animate-gradient text-white shadow-2xl hover:shadow-[#c43d56]/50 transition-all"
+                        >
                             Hire Me
-                        </button>
+                        </Link>
 
-                        <div className='flex items-center gap-5 text-3xl'>
-                            <Link href="https://www.linkedin.com/in/ayansujon" target='_blank' className='text-zinc-400 hover:text-[#008DB9] transition-colors'>
-                                <LuLinkedin />
+                        <div className='flex items-center gap-4'>
+                            <Link
+                                href="https://www.linkedin.com/in/ayansujon"
+                                target='_blank'
+                                aria-label="LinkedIn"
+                                className='group relative flex items-center justify-center w-12 h-12 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-zinc-400 text-2xl overflow-hidden transition-all duration-300 hover:text-white hover:border-[#008DB9]/50 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#008DB9]/30'
+                            >
+                                <span className="absolute inset-0 bg-[#008DB9]/20 scale-0 group-hover:scale-100 rounded-full transition-transform duration-300" />
+                                <LuLinkedin className="relative z-10" />
                             </Link>
-                            <Link href="https://github.com/AyanSujon" target='_blank' className='text-zinc-400 hover:text-white transition-colors'>
-                                <LuGithub />
+
+                            <Link
+                                href="https://github.com/AyanSujon"
+                                target='_blank'
+                                aria-label="GitHub"
+                                className='group relative flex items-center justify-center w-12 h-12 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-zinc-400 text-2xl overflow-hidden transition-all duration-300 hover:text-white hover:border-white/40 hover:-translate-y-1 hover:shadow-lg hover:shadow-white/20'
+                            >
+                                <span className="absolute inset-0 bg-white/10 scale-0 group-hover:scale-100 rounded-full transition-transform duration-300" />
+                                <LuGithub className="relative z-10" />
                             </Link>
-                            <Link href="mailto:ayansujon.contact@gmail.com" target='_blank' className='text-zinc-400 hover:text-[#c43d56] transition-colors'>
-                                <MdOutlineEmail />
+
+                            <Link
+                                href="mailto:ayansujon.contact@gmail.com"
+                                target='_blank'
+                                aria-label="Email"
+                                className='group relative flex items-center justify-center w-12 h-12 rounded-full bg-white/5 backdrop-blur-md border border-white/10 text-zinc-400 text-2xl overflow-hidden transition-all duration-300 hover:text-white hover:border-[#c43d56]/50 hover:-translate-y-1 hover:shadow-lg hover:shadow-[#c43d56]/30'
+                            >
+                                <span className="absolute inset-0 bg-[#c43d56]/20 scale-0 group-hover:scale-100 rounded-full transition-transform duration-300" />
+                                <MdOutlineEmail className="relative z-10" />
                             </Link>
                         </div>
-                    </div>
-
-                    {/* Experience Badge */}
-                    <div className="inline-flex items-center gap-3 bg-zinc-900/80 border border-[#008DB9]/30 rounded-2xl px-5 py-3 backdrop-blur-md">
-                        <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-                        <span className="text-[#008DB9] font-medium">4 months of working experience</span>
                     </div>
                 </div>
 
                 {/* Animated Avatar with Neon Glow */}
-                <div className="relative flex-shrink-0 group">
+                <div className="relative flex-shrink-0 group mx-auto w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[400px] mt-8 lg:mt-0">
                     {/* Neon Glow Border */}
-                    <div className="absolute -inset-4 bg-gradient-to-br from-[#008DB9] via-[#c43d56] to-[#008DB9] rounded-3xl opacity-70 blur-xl group-hover:opacity-90 transition-opacity duration-500" />
+                    <div className="absolute -inset-4 bg-gradient-to-br from-[#008DB9] via-[#c43d56] to-[#008DB9] rounded-3xl opacity-70 blur-xl group-hover:opacity-90 transition-opacity duration-500 animate-gradient" />
 
-                    <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
-                        <figure>
-                            <Image
-                                src="https://i.ibb.co/qXdkjZV/ayansujon-copy.jpg"
-                                alt="Ayan Sujon"
-                                width={300}
-                                height={300}
-                                className="rounded-lg shadow-lg"
-                            />
-                        </figure>
-
+                    <div className="relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-white/5 backdrop-blur-sm">
+                        <Image
+                            src="https://i.ibb.co/qXdkjZV/ayansujon-copy.jpg"
+                            alt="Ayan Sujon"
+                            width={400}
+                            height={400}
+                            className="w-full h-auto rounded-3xl object-cover aspect-square"
+                            priority
+                        />
                     </div>
 
-                    {/* Top Left Badge */}
-                    <div className="absolute -top-8 -left-6 bg-white/10 dark:bg-black/10 backdrop-blur-md border border-white/25 dark:border-white/10 rounded-2xl px-4 py-2.5 flex items-center gap-3 shadow-xl">
-                        <div>
-                            <p className="text-sm font-medium text-white">4 months</p>
-                            <p className="text-[#58C7FF] text-sm -mt-0.5">Working experience</p>
-                        </div>
+                    <div className="absolute -top-3 -left-4 sm:-top-4 sm:-left-6 animate-bounce [animation-duration:3s] rounded-2xl border border-white/25 bg-white/10 px-4 py-2 backdrop-blur-md shadow-xl">
+                        <p className="text-sm font-medium text-white">4 Months</p>
+                        <p className="text-[#58C7FF] text-sm -mt-0.5">Working Experience</p>
                     </div>
 
-                    {/* Bottom Right Badge - "Open to impact" */}
-                    <div className="absolute -bottom-6 -right-4 bg-white/10 dark:bg-black/10 backdrop-blur-md border border-white/25 dark:border-white/10 rounded-2xl px-5 py-3 shadow-xl">
+                    {/* Bottom Right Badge - Open to impact */}
+                    <div className="absolute -bottom-5 -right-3 sm:-bottom-6 sm:-right-4 bg-white/10 backdrop-blur-md border border-white/25 rounded-2xl px-5 py-2 shadow-xl">
                         <div className="flex items-center gap-2 text-emerald-400">
                             <div className="w-2 h-2 bg-emerald-400 rounded-full animate-ping" />
                             <span className="font-medium text-sm">Open to impact</span>
@@ -196,3 +132,13 @@ export default function Hero() {
         </div>
     );
 }
+
+
+
+
+
+
+
+
+
+
