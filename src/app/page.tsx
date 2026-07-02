@@ -6,7 +6,7 @@ import Container from "@/components/Layout/Container";
 
 export default function Home() {
   return (
-    <div className="bg-yellow-100 dark:bg-black">
+    <div className="bg-[#101010] dark:bg-black">
       <Container>
         <Hero />
         <AboutMe />

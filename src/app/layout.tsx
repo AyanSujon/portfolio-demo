@@ -46,6 +46,7 @@ import type { Metadata } from "next";
 import { Teko, Oswald } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/common/Navbar";
+import Footer from "@/components/common/Footer";
 
 const teko = Teko({
   variable: "--font-teko",
@@ -78,10 +79,11 @@ export default function RootLayout({
       lang="en"
       className={`${teko.variable} ${oswald.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="min-h-full flex flex-col">        
         <div>
         <Navbar/>
         {children}
+        <Footer/>
         </div>
       </body>
     </html>

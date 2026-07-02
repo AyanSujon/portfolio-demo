@@ -157,6 +157,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import gsap from "gsap";
+import { GoDotFill } from "react-icons/go";
+
 
 const NAV_LINKS = [
   { label: "Home", href: "/" },
@@ -311,16 +313,28 @@ export default function Navbar() {
   return (
     <div ref={navRef} className="fixed top-0 left-0 right-0 z-50 w-full flex justify-center">
       <nav className="w-[95%] md:w-[75%] lg:w-[55%] flex items-center justify-between px-5 py-3.5 bg-white/10 dark:bg-black/10 backdrop-blur-md border border-white/25 dark:border-white/10 rounded-b-3xl shadow-[0_8px_32px_rgba(0,141,185,0.12)]">
-        <Link href="/" className="font-heading uppercase text-lg font-bold tracking-wider text-[#008DB9]">
-          Ayan Sujon
-        </Link>
+        {/* <Link href="/" className="font-heading flex items-center uppercase text-xl font-bold tracking-wider text-[#008DB9]">
+          Ayan<span><GoDotFill size={12} className=" text-[#008DB9]"/></span>
+          
+        </Link> */}
 
+        <Link
+          href="/"
+          className="font-heading flex items-center uppercase text-xl font-bold tracking-wider 
+             bg-gradient-to-r from-[#008DB9] to-[#c43d56] 
+             bg-clip-text text-transparent"
+        >
+          Ayan
+          <span>
+            <GoDotFill size={12} className="text-[#c43d56]" />
+          </span>
+        </Link>
         <ul className="hidden md:flex items-center gap-5 text-sm uppercase tracking-wide">
           {NAV_LINKS.map(({ label, href }) => (
             <li key={href}>
               <Link
                 href={href}
-                className="font-heading relative py-1 text-zinc-700 dark:text-zinc-200 transition-colors duration-200 hover:text-[#008DB9] after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:w-0 after:rounded-full after:bg-[#008DB9] after:transition-[width] after:duration-300 hover:after:w-full"
+                className="font-heading relative py-1 text-white dark:text-zinc-200 transition-colors duration-200 hover:text-[#008DB9] after:absolute after:bottom-0 after:left-0 after:h-[1.5px] after:w-0 after:rounded-full after:bg-[#008DB9] after:transition-[width] after:duration-300 hover:after:w-full"
               >
                 {label}
               </Link>
