@@ -5,6 +5,7 @@ import Link from 'next/link';
 import React from 'react';
 import { LuGithub, LuLinkedin } from "react-icons/lu";
 import { MdOutlineEmail } from "react-icons/md";
+import TechStack from './TechStack';
 
 export default function Hero() {
     return (
@@ -39,6 +40,9 @@ export default function Hero() {
 
 
             </nav>
+
+            {/* Draggable Tech Stack */}
+            <TechStack />
 
             {/* Hero Section */}
             <main className="flex flex-col lg:flex-row justify-between items-center max-w-7xl mx-auto px-6 lg:px-12 pt-16 lg:pt-12 gap-16 lg:gap-12 relative z-10">
@@ -98,6 +102,8 @@ export default function Hero() {
                         </div>
                     </div>
                 </div>
+
+
 
                 {/* Animated Avatar with Neon Glow */}
                 <div className="relative flex-shrink-0 group mx-auto w-full max-w-[340px] sm:max-w-[380px] lg:max-w-[400px] mt-8 lg:mt-0">
