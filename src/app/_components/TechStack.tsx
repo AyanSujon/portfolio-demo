@@ -110,11 +110,11 @@ export default function TechStackBackground() {
         setZIndices((prev) => ({ ...prev, [id]: zCounter.current }));
     };
 
-    // const reshuffle = () => {
-    //     zCounter.current = TECH_META.length;
-    //     setZIndices(INITIAL_Z);
-    //     setShuffleKey((k) => k + 1);
-    // };
+    const reshuffle = () => {
+        zCounter.current = TECH_META.length;
+        setZIndices(INITIAL_Z);
+        setShuffleKey((k) => k + 1);
+    };
 
     return (
         <>

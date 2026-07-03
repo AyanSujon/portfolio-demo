@@ -2,12 +2,16 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
+
 import { LuGithub, LuLinkedin } from "react-icons/lu";
 import { MdOutlineEmail } from "react-icons/md";
 import TechStack from './TechStack';
+import AnimatedTitle from './AnimatedTitle';
 
 export default function Hero() {
+
+
+
     return (
         <div className='w-full min-h-screen relative overflow-hidden bg-[#101010]'>
 
@@ -47,12 +51,17 @@ export default function Hero() {
             {/* Hero Section */}
             <main className="flex flex-col lg:flex-row justify-between items-center max-w-7xl mx-auto px-6 lg:px-12 pt-16 lg:pt-12 gap-16 lg:gap-12 relative z-10">
                 <div className="flex-1 space-y-6 text-center lg:text-left max-w-xl">
+                    <div className=" inline-flex bg-white/10 backdrop-blur-md border border-white/25 rounded-2xl px-5 py-2 shadow-xl">
+                        <div className="flex items-center gap-2 text-emerald-400">
+                            <div className="w-2 h-2 bg-emerald-400 rounded-full animate-ping" />
+                            <span className="font-medium text-sm">AI Driven Full Stack Developer</span>
+                        </div>
+                    </div>
+
                     <h1 className='text-5xl md:text-6xl font-bold bg-gradient-to-r from-white via-[#008DB9] to-[#c43d56] bg-clip-text text-transparent leading-tight'>
                         Hi, I&apos;m Ayan Sujon
                     </h1>
-                    <h3 className='text-2xl font-semibold text-zinc-300'>
-                        Full Stack Developer, AI Automation Specialist, SaaS Product Builder
-                    </h3>
+                    <AnimatedTitle />
                     <p className='text-xl text-zinc-400 mx-auto lg:mx-0 max-w-md'>
                         I craft modern, scalable, and high-performing web applications using
                         React, Next.js, TypeScript, Node.js, Express, MongoDB, PostgreSQL,
