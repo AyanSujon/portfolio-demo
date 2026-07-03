@@ -14,7 +14,7 @@ const titles = [
   "SaaS Product Builder",
 ];
 
-export default function RotatingTitle() {
+export default function AnimatedTitle() {
   const containerRef = useRef<HTMLDivElement>(null);
   const indexRef = useRef(0);
 
