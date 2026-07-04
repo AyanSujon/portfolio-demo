@@ -8,11 +8,8 @@ import {
   Sparkles,
   TrendingUp,
   Users,
-  ArrowRight,
 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import Link from 'next/link';
 
 const AboutMe = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -102,29 +99,6 @@ const AboutMe = () => {
                 Building digital experiences that matter
               </span>
             </h2>
-
-            {/* CTA */}
-            <div className="mt-10 flex flex-wrap gap-4">
-              <Button
-                size="lg"
-                className="group h-14 rounded-2xl bg-white px-8 text-base font-medium text-black hover:bg-white/90"
-              >
-                <Link href="https://drive.google.com/file/d/1G97HBH6aTDVo_0QeirKF2fCFaH8BXaEG/view?usp=sharing" target="_blank" rel="noopener noreferrer">
-                  Download Resume
-                </Link>
-                <ArrowRight className="ml-3 transition-transform duration-300 group-hover:translate-x-1" />
-              </Button>
-
-              <Button
-                size="lg"
-                variant="outline"
-                className="h-14 rounded-2xl border-white/20 bg-white/5 px-8 text-base text-white hover:text-white hover:bg-white/10"
-              >
-                <Link href="https://www.linkedin.com/in/ayansujon" target="_blank" rel="noopener noreferrer">
-                  Let's Connect
-                </Link>
-              </Button>
-            </div>
           </div>
 
           {/* Description */}

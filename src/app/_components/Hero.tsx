@@ -27,7 +27,7 @@ export default function Hero() {
                 </Link>
 
                 <Link
-                    href="/meeting"
+                    href="https://calendly.com/ayansujon/30min" target="_blank"
                     className="relative inline-flex items-center justify-center rounded-2xl p-[2px] overflow-hidden group"
                 >
                     <span
@@ -72,11 +72,13 @@ export default function Hero() {
 
                     <div className='flex flex-col sm:flex-row items-center gap-6'>
                         <Link
-                            href="/meeting"
+                            href="https://drive.google.com/file/d/1G97HBH6aTDVo_0QeirKF2fCFaH8BXaEG/view?usp=sharing" target="_blank" rel="noopener noreferrer"
                             className="font-heading text-lg font-semibold capitalize rounded-2xl px-7 py-2 bg-[linear-gradient(90deg,#008DB9_0%,#c43d56_50%,#008DB9_100%)] bg-[length:200%_100%] animate-gradient text-white shadow-2xl hover:shadow-[#c43d56]/50 transition-all"
                         >
-                            Hire Me
+                           Download Resume
                         </Link>
+
+                        
 
                         <div className='flex items-center gap-4'>
                             <Link
