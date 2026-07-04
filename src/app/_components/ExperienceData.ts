@@ -12,8 +12,7 @@ import {
 import { RiSupabaseFill } from "react-icons/ri";
 import { SiPostgresql } from "react-icons/si";
 
-
-import type { ExperienceData } from "./types";
+import type { ExperienceData } from "./Types";
 
 export const experienceData: ExperienceData = {
   company: "Global Dream Connect",

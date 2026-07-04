@@ -9,6 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+
 import { experienceData } from "./ExperienceData";
 import Image from "next/image";
 
@@ -140,7 +141,8 @@ export default function ExperienceCard() {
               Tech Stack
             </h4>
             <div className="flex flex-wrap gap-2.5">
-              {data.techStack.map((tech) => (
+              {data.techStack.map((tech ) => (
+                // console.log(typeof tech, tech),
                 <motion.span
                   key={tech.name}
                   variants={iconVariants}
@@ -185,7 +187,7 @@ export default function ExperienceCard() {
 
           {/* responsibilities accordion */}
           <motion.div variants={itemVariants} className="mt-7">
-            <Accordion type="single" collapsible className="w-full">
+            <Accordion className="w-full">
               <AccordionItem
                 value="responsibilities"
                 className="rounded-2xl border border-white/[0.08] bg-white/[0.02] px-5 data-[state=open]:bg-white/[0.03]"
