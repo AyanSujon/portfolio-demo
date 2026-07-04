@@ -646,7 +646,7 @@ export default function Projects() {
                                         {/* Responsive Buttons */}
                                         <div className="flex flex-col sm:flex-row gap-3">
                                             <Button
-                                                asChild
+                                                // asChild
                                                 className="bg-gradient-to-r from-[#008DB9] to-[#C43D56] hover:brightness-110 text-sm px-6"
                                             >
                                                 <Link className='flex items-center' href={project.liveUrl} target="_blank" rel="noopener noreferrer">
@@ -655,7 +655,7 @@ export default function Projects() {
                                             </Button>
 
                                             <Button
-                                                asChild
+                                                // asChild
                                                 variant="outline"
                                                 className="flex border-white/30 hover:bg-white/10 text-sm px-6 hover:text-white"
                                             >
@@ -748,7 +748,7 @@ export default function Projects() {
 
                                 <div className="flex flex-col sm:flex-row gap-4">
                                     <Button
-                                        asChild
+                                        // asChild
                                         className="bg-gradient-to-r from-[#008DB9] to-[#C43D56] hover:brightness-110"
                                     >
                                         <Link className="flex items-center" href={project.liveUrl} target="_blank" rel="noopener noreferrer" >
@@ -757,7 +757,7 @@ export default function Projects() {
                                     </Button>
 
                                     <Button
-                                        asChild
+                                        // asChild
                                         variant="outline"
                                         className="border-white/30 hover:bg-white/10 hover:text-white"
                                     >
