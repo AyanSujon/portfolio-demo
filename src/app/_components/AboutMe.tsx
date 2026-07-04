@@ -1,278 +1,270 @@
-"use client";
+'use client';
 
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/SplitText";
+import React, { useRef, useEffect } from 'react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { gsap } from 'gsap';
+import {
+  Code2,
+  Sparkles,
+  TrendingUp,
+  Users,
+  ArrowRight,
+} from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import Link from 'next/link';
 
-gsap.registerPlugin(ScrollTrigger, SplitText);
+const AboutMe = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = useReducedMotion();
 
-const features = [
-  {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <rect x="3" y="3" width="18" height="18" rx="2" />
-        <path d="M3 9h18M9 21V9" />
-      </svg>
-    ),
-    title: "Modern UI/UX",
-    desc: "Crafting pixel-perfect designs",
-    color: "#008DB9",
-  },
-  {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-      </svg>
-    ),
-    title: "Performance",
-    desc: "Optimized for speed & SEO",
-    color: "#e6b400",
-  },
-  {
-    icon: (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-        <path d="M16 18l6-6-6-6M8 6l-6 6 6 6" />
-      </svg>
-    ),
-    title: "Clean Code",
-    desc: "Scalable & Maintainable",
-    color: "#3ddc84",
-  },
-];
-
-export default function AboutMe() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const cardRef = useRef<HTMLDivElement>(null);
-  const featureRefs = useRef<(HTMLDivElement | null)[]>([]);
-
+  // GSAP ambient mouse-follow glow
   useEffect(() => {
-    const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)"
-    ).matches;
-    const section = sectionRef.current;
-    if (!section) return;
+    const section = containerRef.current;
+    if (!section || prefersReducedMotion) return;
 
-    const ctx = gsap.context(() => {
-      if (prefersReduced) return;
+    const glow = section.querySelector<HTMLDivElement>('.ambient-glow');
+    if (!glow) return;
 
-      // heading: split into chars, type-in reveal
-      const heading = section.querySelector(".about-heading");
-      if (heading) {
-        const split = SplitText.create(heading, { type: "chars" });
-        gsap.set(split.chars, { autoAlpha: 0, y: 20 });
-        gsap.to(split.chars, {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.5,
-          stagger: 0.03,
-          ease: "power2.out",
-          scrollTrigger: { trigger: heading, start: "top 85%" },
-        });
-      }
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = section.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
 
-      // underline draw
-      const underline = section.querySelector(".about-underline");
-      if (underline) {
-        gsap.fromTo(
-          underline,
-          { scaleX: 0 },
-          {
-            scaleX: 1,
-            duration: 0.8,
-            ease: "power3.inOut",
-            transformOrigin: "left center",
-            scrollTrigger: { trigger: underline, start: "top 90%" },
-          }
-        );
-      }
-
-      // bio card: terminal-style clip-path wipe open
-      if (cardRef.current) {
-        gsap.fromTo(
-          cardRef.current,
-          { clipPath: "inset(0 100% 0 0)", autoAlpha: 1 },
-          {
-            clipPath: "inset(0 0% 0 0)",
-            duration: 1,
-            ease: "power4.inOut",
-            scrollTrigger: { trigger: cardRef.current, start: "top 80%" },
-          }
-        );
-
-        // "Who" highlight chip pops in after wipe
-        const chip = cardRef.current.querySelector(".who-chip");
-        if (chip) {
-          gsap.fromTo(
-            chip,
-            { scale: 0, autoAlpha: 0 },
-            {
-              scale: 1,
-              autoAlpha: 1,
-              duration: 0.5,
-              ease: "back.out(3)",
-              delay: 0.5,
-              scrollTrigger: { trigger: cardRef.current, start: "top 80%" },
-            }
-          );
-        }
-
-        // bracket icon idle rotation
-        const bracket = cardRef.current.querySelector(".code-bracket");
-        if (bracket) {
-          gsap.to(bracket, {
-            rotate: 8,
-            duration: 2.5,
-            ease: "sine.inOut",
-            yoyo: true,
-            repeat: -1,
-          });
-        }
-      }
-
-      // feature cards: staggered rise-in
-      gsap.fromTo(
-        featureRefs.current,
-        { autoAlpha: 0, y: 30 },
-        {
-          autoAlpha: 1,
-          y: 0,
-          duration: 0.6,
-          stagger: 0.12,
-          ease: "power3.out",
-          scrollTrigger: { trigger: featureRefs.current[0], start: "top 85%" },
-        }
-      );
-
-      // magnetic tilt on feature cards
-      featureRefs.current.forEach((el) => {
-        if (!el) return;
-        const xTo = gsap.quickTo(el, "x", { duration: 0.4, ease: "power3" });
-        const yTo = gsap.quickTo(el, "y", { duration: 0.4, ease: "power3" });
-        const rotateTo = gsap.quickTo(el, "rotate", {
-          duration: 0.4,
-          ease: "power3",
-        });
-
-        const handleMove = (e: MouseEvent) => {
-          const rect = el.getBoundingClientRect();
-          const relX = e.clientX - rect.left - rect.width / 2;
-          const relY = e.clientY - rect.top - rect.height / 2;
-          xTo(relX * 0.08);
-          yTo(relY * 0.08);
-          rotateTo(relX * 0.02);
-        };
-        const handleLeave = () => {
-          xTo(0);
-          yTo(0);
-          rotateTo(0);
-        };
-
-        el.addEventListener("mousemove", handleMove);
-        el.addEventListener("mouseleave", handleLeave);
+      gsap.to(glow, {
+        '--x': `${x}%`,
+        '--y': `${y}%`,
+        duration: 0.9,
+        ease: 'power2.out',
       });
-    }, section);
+    };
 
-    return () => ctx.revert();
-  }, []);
+    section.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      section.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, [prefersReducedMotion]);
+
+  const highlightCards = [
+    {
+      icon: <Code2 className="w-6 h-6" />,
+      title: 'Problem Solving',
+      desc: 'I enjoy breaking down complex challenges into practical, elegant solutions that are easy to understand and maintain.',
+    },
+    {
+      icon: <Sparkles className="w-6 h-6" />,
+      title: 'Craftsmanship',
+      desc: 'I believe quality comes from thoughtful decisions, clean implementation, and attention to the smallest details.',
+    },
+    {
+      icon: <TrendingUp className="w-6 h-6" />,
+      title: 'Continuous Growth',
+      desc: 'Learning is a constant part of my journey. I embrace new ideas, tools, and approaches that help me build better products.',
+    },
+    {
+      icon: <Users className="w-6 h-6" />,
+      title: 'User-First Thinking',
+      desc: 'Every feature should have a purpose. I focus on creating experiences that feel intuitive, accessible, and genuinely useful.',
+    },
+  ];
+
+  const focusAreas = [
+    'Scalable Application Architecture',
+    'AI-Powered Workflows',
+    'Performance Optimization',
+    'Long-Term Product Value',
+  ];
 
   return (
     <section
-      ref={sectionRef}
-      className="w-full py-24 px-6"
-      style={{ backgroundColor: "#101010" }}
+      ref={containerRef}
+      id="about"
+      className="relative overflow-hidden py-16 md:py-24 lg:py-32"
     >
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-16">
-          <h2
-            className="about-heading text-4xl md:text-5xl font-bold text-white inline-block"
-          >
-            About Me
-          </h2>
-          <div
-            className="about-underline h-[3px] w-24 mx-auto mt-4 rounded-full"
-            style={{
-              background: "linear-gradient(90deg, #8b5cf6, #c43d56)",
-            }}
-          />
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-[1.6fr_1fr] gap-6">
-          {/* Bio card */}
-          <div
-            ref={cardRef}
-            className="relative rounded-2xl p-8 overflow-hidden"
-            style={{
-              backgroundColor: "#13131a",
-              border: "1px solid rgba(255,255,255,0.08)",
-            }}
-          >
-            <div
-              className="code-bracket absolute top-6 right-6 text-5xl font-mono opacity-10 select-none"
-              style={{ color: "#008DB9" }}
-            >
-              {"</>"}
+      <div className="relative mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8">
+        <div className="space-y-16">
+          {/* Header */}
+          <div className="w-full">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm tracking-[2px] text-white/80 backdrop-blur-xl">
+              ABOUT ME
             </div>
 
-            <h3 className="text-2xl font-bold text-white mb-4 relative z-10">
-              <span
-                className="who-chip inline-block px-2 py-0.5 rounded-md mr-2"
-                style={{ backgroundColor: "#008DB9", color: "#101010" }}
-              >
-                Who
+            <h2 className="mt-6 max-w-6xl text-4xl font-semibold leading-[1.05] tracking-tighter text-white sm:text-5xl lg:text-7xl">
+              Building digital experiences
+              <br />
+              <span className="bg-gradient-to-r from-[#008DB9] to-[#C43D56] bg-clip-text text-transparent">
+                that matter
               </span>
-              Am I?
+            </h2>
+
+            {/* CTA */}
+            <div className="mt-10 flex flex-wrap gap-4">
+              <Button
+                size="lg"
+                className="group h-14 rounded-2xl bg-white px-8 text-base font-medium text-black hover:bg-white/90"
+              >
+                <Link href="https://drive.google.com/file/d/1G97HBH6aTDVo_0QeirKF2fCFaH8BXaEG/view?usp=sharing" target="_blank" rel="noopener noreferrer">
+                  Download Resume
+                </Link>
+                <ArrowRight className="ml-3 transition-transform duration-300 group-hover:translate-x-1" />
+              </Button>
+
+              <Button
+                size="lg"
+                variant="outline"
+                className="h-14 rounded-2xl border-white/20 bg-white/5 px-8 text-base text-white hover:text-white hover:bg-white/10"
+              >
+                <Link href="https://www.linkedin.com/in/ayansujon" target="_blank" rel="noopener noreferrer">
+                  Let's Connect
+                </Link>
+              </Button>
+            </div>
+          </div>
+
+          {/* Description */}
+          <div className="max-w-4xl space-y-6 text-lg leading-relaxed text-white/80 md:text-xl">
+            <p>
+              I'm a Full Stack Developer who enjoys transforming ideas into
+              reliable, intuitive, and meaningful digital products. For me,
+              development is more than writing code—it's about understanding
+              real problems, thinking critically, and creating solutions that
+              make technology feel simple for the people who use it.
+            </p>
+
+            <p>
+              I approach every project with curiosity and a focus on quality.
+              Before writing a single line of code, I take time to understand
+              the purpose behind the product, the challenges it aims to solve,
+              and the experience users expect. This mindset helps me build
+              applications that are not only functional but also scalable,
+              maintainable, and thoughtfully designed.
+            </p>
+
+            <p>
+              I value clean architecture, attention to detail, and continuous
+              improvement. Technology evolves quickly, and I enjoy learning,
+              experimenting, and refining my skills to stay current with
+              modern development practices. Every project is an opportunity
+              to grow, explore new ideas, and become a better engineer than I
+              was yesterday.
+            </p>
+          </div>
+
+          {/* What Drives Me */}
+          <div>
+            <h3 className="mb-6 text-xs uppercase tracking-[3px] text-white/50">
+              What Drives Me
             </h3>
 
-            <p className="text-gray-300 leading-relaxed mb-4 relative z-10">
-              Hi, I&apos;m{" "}
-              <span className="font-semibold" style={{ color: "#008DB9" }}>
-                Ayan
-              </span>{" "}
-              — a Frontend Focused MERN Stack Developer who loves turning
-              ideas into clean, impactful, and user-friendly web experiences.
-            </p>
-
-            <p className="text-gray-300 leading-relaxed relative z-10">
-              I&apos;m passionate about crafting modern UIs with React,
-              optimizing performance, and writing reusable, maintainable code
-              that actually makes a difference. I bridge the gap between
-              design and technology.
-            </p>
-          </div>
-
-          {/* Feature cards */}
-          <div className="flex flex-col gap-4">
-            {features.map((f, i) => (
-              <div
-                key={f.title}
-                ref={(el) => {
-                  featureRefs.current[i] = el;
-                }}
-                className="flex items-center gap-4 rounded-xl p-5 cursor-default"
-                style={{
-                  backgroundColor: "#13131a",
-                  border: "1px solid rgba(255,255,255,0.08)",
-                }}
-              >
-                <div
-                  className="flex items-center justify-center w-11 h-11 rounded-lg shrink-0"
-                  style={{
-                    backgroundColor: `${f.color}1a`,
-                    color: f.color,
-                  }}
+            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-4">
+              {highlightCards.map((card, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={prefersReducedMotion ? undefined : { y: -6 }}
+                  className="group"
                 >
-                  {f.icon}
-                </div>
-                <div>
-                  <div className="text-white font-semibold">{f.title}</div>
-                  <div className="text-gray-400 text-sm">{f.desc}</div>
-                </div>
-              </div>
-            ))}
+                  <Card className="h-full border-white/10 bg-white/5 backdrop-blur-xl transition-all duration-300 hover:border-white/20">
+                    <CardContent className="p-7">
+                      <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-[#008DB9]/10 to-[#C43D56]/10 text-[#008DB9] transition-transform duration-300 group-hover:scale-110">
+                        {card.icon}
+                      </div>
+
+                      <h3 className="mb-3 text-xl font-semibold text-white lg:text-2xl">
+                        {card.title}
+                      </h3>
+
+                      <p className="leading-relaxed text-white/70">
+                        {card.desc}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
           </div>
+
+          {/* Philosophy */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/5 to-white/10 p-8 backdrop-blur-2xl lg:p-10"
+          >
+            <blockquote className="max-w-4xl text-xl italic leading-relaxed text-white/90 md:text-2xl">
+              "Great software isn't defined by how much code it contains—it's
+              defined by how naturally it solves problems. I believe every
+              product should be fast, reliable, scalable, and enjoyable to
+              use."
+            </blockquote>
+
+            <div className="mt-6 text-sm text-white/60">
+              — My development philosophy
+            </div>
+          </motion.div>
+
+          {/* Current Focus */}
+          <div>
+            <h3 className="mb-6 text-xs uppercase tracking-[3px] text-white/50">
+              Current Focus
+            </h3>
+
+            <p className="mb-6 max-w-4xl text-lg leading-relaxed text-white/80">
+              Today, my focus is on building modern digital products that
+              combine exceptional user experiences with reliable engineering.
+              I'm continuously exploring better development patterns and
+              creating software that delivers long-term value rather than
+              short-term fixes. Beyond building applications, I'm committed to
+              improving my craft every day—learning from every project,
+              embracing new challenges, and contributing to experiences that
+              make a meaningful impact.
+            </p>
+
+            <div className="flex flex-wrap gap-3">
+              {focusAreas.map((area, index) => (
+                <motion.div
+                  key={index}
+                  whileHover={
+                    prefersReducedMotion ? undefined : { scale: 1.05 }
+                  }
+                  className="flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 px-6 py-3 text-sm text-white/90 transition-all hover:border-[#008DB9]/30 hover:bg-white/10"
+                >
+                  <div className="h-1.5 w-1.5 rounded-full bg-[#C43D56]" />
+                  {area}
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Let's Build Something Meaningful */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl lg:p-10"
+          >
+            <h3 className="mb-4 text-2xl font-semibold text-white lg:text-3xl">
+              Let's Build Something{' '}
+              <span className="bg-gradient-to-r from-[#008DB9] to-[#C43D56] bg-clip-text text-transparent">
+                Meaningful
+              </span>
+            </h3>
+
+            <p className="max-w-3xl leading-relaxed text-white/70">
+              Whether it's transforming an idea into a polished product,
+              improving an existing platform, or creating something entirely
+              new, I'm always excited to collaborate on projects that value
+              quality, innovation, and thoughtful engineering.
+            </p>
+          </motion.div>
         </div>
       </div>
     </section>
   );
-}
+};
+
+export default AboutMe;
