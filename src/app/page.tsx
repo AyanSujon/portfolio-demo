@@ -20,11 +20,6 @@ export default function Home() {
         <Projects />
         <Services />
         <Contact />
-
-
-
-
-        
       </Container>
     </div>
   );
