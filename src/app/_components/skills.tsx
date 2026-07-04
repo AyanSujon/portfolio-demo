@@ -197,7 +197,7 @@ export default function Skills() {
 
       <div className="relative mx-auto max-w-6xl">
         {/* Header */}
-        <div ref={headerRef} className="mb-14 text-center">
+        {/* <div ref={headerRef} className="mb-14 text-center">
           <p
             className="mb-3 text-sm font-medium uppercase tracking-[0.2em]"
             style={{ color: TEAL }}
@@ -207,6 +207,27 @@ export default function Skills() {
           <h2 className="text-3xl font-bold text-white sm:text-4xl">
             Skills &amp; Tools
           </h2>
+        </div> */}
+
+                {/* Header */}
+        <div className="w-full text-center">
+
+          <div className=" inline-flex bg-white/10 backdrop-blur-md border border-white/25 rounded-2xl px-5 py-2 shadow-xl">
+            <div className="flex items-center gap-2 text-emerald-400">
+              <div className="w-2 h-2 bg-emerald-400 rounded-full animate-ping" />
+              <span className="font-medium text-sm">Skills</span>
+            </div>
+          </div>
+
+          <h2 className="mt-6 max-w-6xl text-4xl font-semibold leading-[1.05] tracking-tighter text-white sm:text-5xl lg:text-7xl">
+            <span className="bg-gradient-to-r from-[#008DB9] to-[#C43D56] bg-clip-text text-transparent">
+              Building with the Right Technologies
+            </span>
+          </h2>
+
+        <p className="mx-auto mt-5 max-w-xl mb-4 text-sm leading-relaxed text-white/50 sm:text-base">
+          The technologies, frameworks, and tools I use to design, develop, and deploy modern web applications. From frontend interfaces to backend systems, each tool helps me build fast, scalable, and user-focused digital experiences.
+        </p>
         </div>
 
         {/* Category cards */}

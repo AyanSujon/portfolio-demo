@@ -86,15 +86,20 @@ const AboutMe = () => {
         <div className="space-y-16">
           {/* Header */}
           <div className="w-full">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm tracking-[2px] text-white/80 backdrop-blur-xl">
+            {/* <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm tracking-[2px] text-white/80 backdrop-blur-xl">
               ABOUT ME
+            </div> */}
+            <div className=" inline-flex bg-white/10 backdrop-blur-md border border-white/25 rounded-2xl px-5 py-2 shadow-xl">
+              <div className="flex items-center gap-2 text-emerald-400">
+                <div className="w-2 h-2 bg-emerald-400 rounded-full animate-ping" />
+                <span className="font-medium text-sm">ABOUT ME</span>
+              </div>
             </div>
 
             <h2 className="mt-6 max-w-6xl text-4xl font-semibold leading-[1.05] tracking-tighter text-white sm:text-5xl lg:text-7xl">
-              Building digital experiences
-              <br />
+            
               <span className="bg-gradient-to-r from-[#008DB9] to-[#C43D56] bg-clip-text text-transparent">
-                that matter
+                Building digital experiences that matter
               </span>
             </h2>
 

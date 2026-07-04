@@ -11,6 +11,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import ExperienceCard from "./ExperienceCard";
+import { Button } from "@/components/ui/button";
+import { Link } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -77,22 +79,28 @@ export default function Experience() {
         transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
         className="mx-auto max-w-3xl text-center"
       >
-        <span className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.03] px-4 py-1.5 text-xs font-medium uppercase tracking-[0.14em] text-white/60">
-          <span className="h-1.5 w-1.5 rounded-full bg-[#008DB9]" />
-          Professional Journey
-        </span>
 
-        <h2
-          ref={headingRef}
-          className="mt-5 inline-block overflow-hidden text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl"
-        >
-          Experience
-        </h2>
+        {/* Header */}
+        <div className="w-full">
+
+          <div className=" inline-flex bg-white/10 backdrop-blur-md border border-white/25 rounded-2xl px-5 py-2 shadow-xl">
+            <div className="flex items-center gap-2 text-emerald-400">
+              <div className="w-2 h-2 bg-emerald-400 rounded-full animate-ping" />
+              <span className="font-medium text-sm"> Experience</span>
+            </div>
+          </div>
+
+          <h2 className="mt-6 max-w-6xl text-4xl font-semibold leading-[1.05] tracking-tighter text-white sm:text-5xl lg:text-7xl">
+            <span className="bg-gradient-to-r from-[#008DB9] to-[#C43D56] bg-clip-text text-transparent">
+              My Professional Journey
+            </span>
+          </h2>
 
         <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-white/50 sm:text-base">
           A glimpse into my professional experience, where I contributed to real-world products,
           collaborated with talented teams, and built scalable full-stack applications.
         </p>
+        </div>
       </motion.div>
 
       <div className="mt-14 w-full sm:mt-16">
