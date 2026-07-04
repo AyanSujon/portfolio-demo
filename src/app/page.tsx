@@ -7,6 +7,7 @@ import Skills from "./_components/skills";
 import Experience from "./_components/experience";
 import Projects from "./_components/Projects";
 import Services from "./_components/services";
+import Contact from "./_components/Contact";
 
 export default function Home() {
   return (
@@ -18,7 +19,7 @@ export default function Home() {
         <Skills/>
         <Projects />
         <Services />
-
+        <Contact />
 
 
 
