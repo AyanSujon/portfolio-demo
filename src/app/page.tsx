@@ -5,6 +5,7 @@ import AboutMe from "./_components/AboutMe";
 import Container from "@/components/Layout/Container";
 import Skills from "./_components/skills";
 import Experience from "./_components/experience";
+import Projects from "./_components/Projects";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
         <AboutMe />
         <Experience />
         <Skills/>
+        <Projects />
 
 
 
