@@ -35,37 +35,36 @@ const socialLinks = [
 
 const quickLinks = [
   { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Services", href: "/services" },
-  { name: "Projects", href: "/projects" },
-  { name: "Blog", href: "/blog" },
-  { name: "Contact", href: "/contact" },
+  { name: "About", href: "#about" },
+  { name: "Services", href: "#services" },
+  { name: "Projects", href: "#projects" },
+  { name: "Contact", href: "#contact" },
 ];
 
 const serviceLinks = [
   {
     name: "Web Application Development",
-    href: "/services/web-development",
+    href: "#",
   },
   {
     name: "SaaS Development",
-    href: "/services/saas-development",
+    href: "#",
   },
   {
     name: "E-commerce Development",
-    href: "/services/ecommerce-development",
+    href: "#",
   },
   {
     name: "Custom Dashboard Development",
-    href: "/services/dashboard-development",
+    href: "#",
   },
   {
     name: "REST API Development",
-    href: "/services/api-development",
+    href: "#",
   },
   {
     name: "Performance Optimization",
-    href: "/services/performance-optimization",
+    href: "#",
   },
 ];
 
@@ -218,12 +217,12 @@ export default function Footer() {
         <div className="my-10 h-px bg-gradient-to-r from-transparent via-zinc-700 to-transparent" />
 
         {/* ================= Bottom ================= */}
-        <div className="flex flex-col items-center justify-between gap-4 text-center text-sm text-zinc-500 md:flex-row">
+        <div className="flex flex-col items-center  justify-center gap-4 text-center text-sm text-zinc-500 md:flex-row">
           <p className="transition-colors duration-300 hover:text-zinc-300">
             © {new Date().getFullYear()} Ayan Sujon. All Rights Reserved.
           </p>
 
-          <div className="flex flex-wrap items-center justify-center gap-6">
+          {/* <div className="flex flex-wrap items-center justify-center gap-6">
             {footerLinks.map((item) => (
               <Link
                 key={item.name}
@@ -234,7 +233,7 @@ export default function Footer() {
                 <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-[#008DB9] transition-all duration-300 group-hover:w-full" />
               </Link>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>
