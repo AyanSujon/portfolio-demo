@@ -11,7 +11,6 @@ import {
   SiNextdotjs,
   SiReact,
   SiTailwindcss,
-  //   SiCss3,
   SiHtml5,
   SiPrisma,
   SiNodedotjs,
@@ -186,7 +185,7 @@ export default function Skills() {
     <section
       ref={sectionRef}
       id="skills"
-      className="relative w-full bg-[#101010] px-6 py-24 sm:px-10 lg:px-16"
+      className="relative w-full bg-[#101010] py-10 max-w-7xl mx-auto px-6 lg:px-12"
     >
       {/* ambient glow */}
       <div

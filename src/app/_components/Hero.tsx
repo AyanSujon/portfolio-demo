@@ -13,7 +13,7 @@ export default function Hero() {
 
 
     return (
-        <div className='w-full min-h-screen relative overflow-hidden bg-[#101010]'>
+        <div className=' w-full min-h-screen relative overflow-hidden bg-[#101010]'>
 
             {/* Ambient glass background glow */}
             <div className="pointer-events-none absolute inset-0 -z-10">
@@ -21,7 +21,7 @@ export default function Hero() {
                 <div className="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-[#c43d56]/20 rounded-full blur-[120px]" />
             </div>
 
-            <nav className='flex items-center justify-between w-full py-6 relative z-10'>
+            <nav className='flex items-center justify-between max-w-7xl mx-auto px-6 lg:px-12 py-6 relative z-10'>
                 <Link href="/" className='font-heading uppercase text-2xl font-bold bg-gradient-to-r from-[#008DB9] via-white to-[#c43d56] bg-clip-text text-transparent'>
                     Ayan Sujon
                 </Link>
