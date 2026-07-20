@@ -462,7 +462,7 @@ text-align:center;
 ">
 
 <a
-href="https://ayansujon.netlify.app"
+href="https://ayansujon.vercel.app/"
 style="
 display:inline-block;
 background:#06b6d4;
